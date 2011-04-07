@@ -1,0 +1,8 @@
+<ul>
+{% for entry in entries %}
+<li><h2>{{ entry.message }}</h2>
+{% else %}
+<li><em>Unbelievable.  No entries here so far</em>
+{% endfor %}
+</li>
+</ul>

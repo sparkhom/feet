@@ -1,0 +1,167 @@
+/* HTML Elements */
+html {
+    height:100%;
+}
+
+body {
+    background-color:#d0c093;
+    font:14px Helvetica, Arial, sans-serif;
+}
+
+h2 {
+    font-size:14px;
+    font-weight:bold;
+}
+
+/* Base page elements */
+#wrap {
+    width:960px;
+    margin:0 auto;
+}
+
+#banner {
+    padding:20px;
+    background-color:#fff;
+    margin-bottom:20px;
+    font-size:14px;
+}
+
+#header {
+    height:97px;
+    border-top:2px solid #f400a1;
+    background-color:#302B1D;
+    padding:20px;
+    margin-bottom:20px;
+}
+
+#header #logo {
+    height:97px;
+    width:200px;
+    background:url('logo.png');
+}
+
+#navbar {
+    margin-top:-20px;
+    float:right;
+}
+
+#navbar li {
+    display:inline;
+}
+
+#navbar li a {
+    text-transform:lowercase;
+    font-weight:bold;
+    color:#fff;
+    padding:0px 20px 20px 20px;
+    text-decoration:none;
+}
+
+#navbar li a#current, #navbar li a:hover {
+    background-color:#413C2E;
+    border-top:2px solid #D9CB84;
+}
+
+#main {
+    background-color:#fff;
+}
+
+#left, #right {
+    margin-bottom:20px;
+}
+
+#left {
+    background-color:#fff;
+    float:left;
+    width:419px;
+    padding:20px;
+    border-right:1px solid #eee;
+}
+
+#right {
+    float:right;
+    background-color:#fff;
+    width:500px;
+}
+
+#right_inside {
+    padding:0px 20px 20px 20px;
+    height:100%;
+}
+
+#footer {
+    background-color:#302B1D;
+    clear:both;
+    color:#fff;
+    padding:20px;
+}
+
+/* Detail page elements */
+#looking_for {
+    font-size:18px;
+    padding:20px;
+    /*border-top:2px solid #f400a1;*/
+    background-color:#302B1D;
+}
+
+#looking_for label {
+    color:#fff;
+    font-weight:bold;
+}
+
+#looking_for textarea {
+    margin-top:5px;
+    font-size:24px;
+    resize:vertical;
+    width:100%;
+    border-radius:2px;
+    border:1px solid #eee;
+}
+
+#looking_for textarea:focus {
+    box-shadow: 0 0 2px 2px #f400a1;
+}
+
+#looking_for #find_wrap {
+    text-align:right;
+    /*width:101%; /* why? WHY?! It doesn't align otherwise! WHAT THE FUCK WINDOWS AFRSADADSAd */
+    /* Never mind. */
+}
+
+#events_title {
+    font-size:16px;
+    text-align:center;
+    border-bottom:1px solid #eee;
+    text-transform:lowercase;
+    color:#aaa;
+    margin-top:20px;
+}
+
+.event {
+    border-bottom: 1px solid #EEEEEE;
+    margin-top:5px;
+    height:56px;
+}
+
+.event img {
+    padding: 3px 0 0 3px;
+}
+
+.event_text {
+    font-size:16px;
+    margin-left:60px;
+    margin-top:-56px;
+    width:400px;
+}
+
+.event_text a {
+    font-variant: small-caps;
+}
+
+.event_time {
+    float:right;
+    background-color:#413C2E;
+    color:#fff;
+    font-weight:bold;
+    padding:2px;
+}

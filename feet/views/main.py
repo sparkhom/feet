@@ -94,7 +94,7 @@ def register():
             if User.query.filter_by(username=form.username.data).count() > 0:
                 error.append('There is already a user by that name.')
             else:
-                user = User(form.username.data, sha1(form.password.data).hexdigest(), form.email.data, form.location.data, form.latitude.data, form.longitude.data, form.first_name.data, form.last_name.data, form.phone.data, form.website.data, form.aim.data, form.gtalk.data, form.about_me.data)
+                user = User(form.username.data, sha1(form.password.data).hexdigest(), form.email.data, form.location.data, 0, 0, form.first_name.data, form.last_name.data, form.phone.data, form.website.data, form.aim.data, form.gtalk.data, form.about_me.data)
                 try:
                     db.session.add(user)
                     db.session.commit()

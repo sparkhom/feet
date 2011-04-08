@@ -36,6 +36,8 @@ h2 {
     margin-bottom:20px;
 	-moz-border-radius-bottomleft: 15px;
 	-moz-border-radius-bottomright: 15px;
+	border-bottom-left-radius: 15px;
+	border-bottom-right-radius: 15px;
 }
 
 #header #logo {
@@ -49,6 +51,7 @@ h2 {
 	position:relative; right:-130px;
     margin-top:20px;
 	-moz-border-radius: 8px;
+	border-radius: 8px;
     background: #f400a1;
     padding: 5px 5px 7px 5px;
 	display: inline-block;
@@ -59,20 +62,41 @@ h2 {
 }
 .search .field {
 	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) inset;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) inset;
     background: #FFFFFF;
     border: 1px solid #fff;
     padding: 5px 5px 5px 5px;
     width: 200px;
 }
 .search .go {
-    -moz-border-radius: 10px;
-    background: -moz-linear-gradient(center top , #302b1b, #302b1b) repeat scroll 0 0 transparent;
-    border: 1px solid #302b1b;
-    color: #FFFFFF;
-    font-size: 11px;
-	padding:5px 5px 5px 5px;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
-    width: 50px;
+	background: #f6389e;
+	display: inline-block;
+	padding: 5px 5px 5px;
+	color: #fff;
+	text-decoration: none;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+	box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+	border-bottom: 1px solid rgba(0,0,0,0.25);
+	position: relative;
+	cursor: pointer;
+	
+	border:1px;
+	
+	
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 1;
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25); 
+}
+
+.search .go:hover {background-color: #fb4ba9;
+}
+.search .go:visited {background-color: #f6389e;
 }
 
 #navbar {
@@ -92,7 +116,9 @@ h2 {
     padding:10px 20px 10px 20px;
     text-decoration:none;
 	-moz-border-radius-bottomleft: 5px;
+	border-bottom-left-radius: 5px;
 	-moz-border-radius-bottomright: 5px;
+	border-bottom-right-radius: 5px;
 }
 
 #navbar li a#current, #navbar li a:hover {
@@ -120,31 +146,56 @@ h2 {
 .looking {
 	width:460px;
 	-moz-border-radius-topleft: 8px;
+	border-top-left-radius: 8px;
 	-moz-border-radius-topright: 8px;
-    background: #f400a1;
-    padding: 5px 5px 7px 5px;
+	border-top-right-radius: 8px;
+    padding: 5px 5px 5px 5px;
 	display: inline-block;
 }
 
-.looking input {
+.looking .textarea {
     font: 12px Helvetica, Arial, sans-serif;
 }
 .looking .field {
 	-moz-border-radius: 5px;
+	border-radius: 5px;
+    -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) inset;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) inset;
     background: #FFFFFF;
     border: 1px solid #fff;
     padding: 5px 5px 5px 5px;
-    width: 200px;
 }
 .looking .go {
-    -moz-border-radius: 10px;
-    background: -moz-linear-gradient(center top , #302b1b, #302b1b) repeat scroll 0 0 transparent;
-    border: 1px solid #302b1b;
-    color: #FFFFFF;
-    font-size: 11px;
-	padding:5px 5px 5px 5px;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
-    width: 50px;
+	margin-top:10px;
+	
+	background: #f6389e;
+	display: inline-block;
+	padding: 5px 5px 5px;
+	color: #fff;
+	text-decoration: none;
+	-moz-border-radius: 6px;
+	border-radius: 6px;
+	-moz-box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+	box-shadow: 0 1px 3px rgba(0,0,0,0.6);
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+	border-bottom: 1px solid rgba(0,0,0,0.25);
+	position: relative;
+	cursor: pointer;
+	
+	border:1px;
+	
+	font-size: 16px;
+	font-weight: bold;
+	line-height: 1;
+	text-shadow: 0 -1px 1px rgba(0,0,0,0.25); 
+	
+}
+
+.looking .go:hover {background-color: #fb4ba9;
+	-moz-box-shadow: 0px 0px 7px #48453a;
+	box-shadow: 0px 0px 7px #48453a;
+}
+.looking .go:visited {background-color: #f6389e;
 }
 
 #right {
@@ -164,13 +215,15 @@ h2 {
     color:#fff;
     padding:20px;
 	-moz-border-radius-topleft: 15px;
+	border-top-left-radius: 15px;
 	-moz-border-radius-topright: 15px;
+	border-top-right-radius: 15px;
 }
 
 /* Detail page elements */
 #looking_for {
     font-size:18px;
-    padding:20px;
+    padding:20px 20px 20px 20px;
     /*border-top:2px solid #f400a1;*/
     background-color:#302B1D;
 }
@@ -184,7 +237,7 @@ h2 {
     margin-top:5px;
     font-size:24px;
     resize:vertical;
-    width:100%;
+    width:450px;
     border-radius:2px;
     border:1px solid #eee;
 }
@@ -200,12 +253,15 @@ h2 {
 }
 
 #events_title {
-    font-size:16px;
-    text-align:center;
+    font-size:40px;
+	letter-spacing:-2px;
+    text-align:right;
+	font-weight:bold;
     border-bottom:1px solid #eee;
     text-transform:lowercase;
-    color:#aaa;
+    color:#e7e7e7;
     margin-top:20px;
+	text-shadow:  -1px -1px 0px #c9c9c9, 1px 1px 0px #fff;
 }
 
 .event {
@@ -219,6 +275,8 @@ h2 {
 }
 
 .event_text {
+	height:100%;
+	vertical-align:central;
     font-size:16px;
     margin-left:60px;
     margin-top:-56px;

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Title | Feet</title>
+        <title>feet.  |  hanging out locally.</title>
         <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
         <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
     </head>
     <body>
         <div id="wrap">
@@ -12,11 +13,19 @@
                     <ul>
                         <li><a href="#" id="current">Main</a></li>
                         <li><a href="#">About</a></li>
-                        <li><a href="#">Login</a></li>
-                        <li><a href="#">Sign Up</a></li>
+                        <li><a href="#">Login/Signup</a></li>
+                        <li><a href="#">Notifications</a></li>
                     </ul>
+                    <form class="search">
+						<input type="text" onblur="if (this.value == '') {this.value = 'Search...';}" onfocus="if (this.value == 'Search...') {this.value = '';}" value="Search..." class="field">
+						<input type="button" value="Search" class="go">
+					</form>
                 </div>
+                
                 <div id="logo"></div>
+                
+                
+               
             </div>
             <div id="banner">
                 feet is a website that lets you find others to hang out with locally. It's easy to get started, just sign up and type in the box below.
@@ -24,7 +33,10 @@
             <div id="main">
                 <div id="left">
                     <img src="http://profile.ak.fbcdn.net/hprofile-ak-snc4/161499_710630994_5364294_n.jpg"><br>
-                    <h2>Serguey Parkhomovsky</h2><br>
+                    <h2>Serguey Parkhomovsky</h2>
+                    <p>&nbsp;</p>
+                    <p><div class="bl"><div class="br">Lorem ipsum dolor sit amet consectetur adipisicing elitc </div></div> </p>
+                    <br>
                 </div>
                 <div id="right">
                     <form method="POST" action="#" id="looking_for">

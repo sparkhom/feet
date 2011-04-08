@@ -4,7 +4,7 @@ html {
 }
 
 body {
-    background-color:#f7f6f2;
+    background-color:#f4f2dd;
     font:12px Helvetica, Arial, sans-serif;
 }
 
@@ -20,11 +20,12 @@ h2 {
 }
 
 #banner {
-    padding:20px;
+	text-align:center;
+	padding:20px;
     margin-bottom:20px;
-    font-size:16px;
-	color:#8b8b8b;
-	text-shadow: 2px 2px 2px #fff;
+    font-size:30px;
+	color:#969696;
+	text-shadow: -1px -1px 0px #474747, 1px 1px 0px #ffffff;
 }
 
 #header {
@@ -104,15 +105,46 @@ h2 {
 }
 
 #left, #right {
-    margin-bottom:20px;
+    margin-bottom:50px;
+	-moz-border-radius: 10px;
 }
 
 #left {
     background-color:#fff;
     float:left;
-    width:419px;
+    width:400px;
     padding:20px;
     border-right:1px solid #eee;
+}
+
+.looking {
+	width:460px;
+	-moz-border-radius-topleft: 8px;
+	-moz-border-radius-topright: 8px;
+    background: #f400a1;
+    padding: 5px 5px 7px 5px;
+	display: inline-block;
+}
+
+.looking input {
+    font: 12px Helvetica, Arial, sans-serif;
+}
+.looking .field {
+	-moz-border-radius: 5px;
+    background: #FFFFFF;
+    border: 1px solid #fff;
+    padding: 5px 5px 5px 5px;
+    width: 200px;
+}
+.looking .go {
+    -moz-border-radius: 10px;
+    background: -moz-linear-gradient(center top , #302b1b, #302b1b) repeat scroll 0 0 transparent;
+    border: 1px solid #302b1b;
+    color: #FFFFFF;
+    font-size: 11px;
+	padding:5px 5px 5px 5px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.6);
+    width: 50px;
 }
 
 #right {

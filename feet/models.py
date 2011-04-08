@@ -3,6 +3,11 @@ from datetime import datetime
 
 db = SQLAlchemy()
 
+event_members = db.Table('event_members',
+        db.Column('user_id', db.Integer, db.ForeignKey('users.id')),
+        db.Column('event_id', db.Integer, db.ForeignKey('events.id'))
+        )
+
 class User(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
@@ -12,29 +17,80 @@ class User(db.Model):
     location = db.Column(db.String(80))
     first_name = db.Column(db.String(80))
     last_name = db.Column(db.String(80))
+    phone = db.Column(db.String(80))
+    website = db.Column(db.String(80))
+    aim = db.Column(db.String(80))
+    gtalk = db.Column(db.String(80))
+    events = db.relationship('Event', secondary=event_members, backref=db.backref('users', lazy='dynamic'))
     created = db.Column(db.DateTime)
 
-    def __init__(self, username, password, email, first_name, last_name):
+    def __init__(self, username, password, email, location, first_name=None, last_name=None, phone=None, website=None, aim=None, gtalk=None):
         self.username = username
         self.password = password
         self.email = email
+        self.location = location
         self.first_name = first_name
         self.last_name = last_name
+        self.phone = phone
+        self.website = website
+        self.aim = aim
+        self.gtalk = gtalk
         self.created = datetime.utcnow()
 
     def __repr__(self):
         return '<User %r>' % self.username
+
+class Request(db.Model):
+    __tablename__ = 'requests'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user = db.relationship('User', backref=db.backref('requests', lazy='dynamic'))
+    event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
+    event = db.relationship('Event', backref=db.backref('requests', lazy='dynamic'))
+    message = db.Column(db.String(256))
+    created = db.Column(db.DateTime)
+
+    def __init__(self, user, event, message=None):
+        self.user = user
+        self.event = event
+        self.message = message
+        self.created = datetime.utcnow()
+
+    def __repr__(self):
+        return '<Request %r>' % self.id
 
 class Event(db.Model):
     __tablename__ = 'events'
     id = db.Column(db.Integer, primary_key=True)
     location = db.Column(db.String(80))
     description = db.Column(db.String(160))
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    user = db.relationship('User', backref=db.backref('users',lazy='dynamic'))
+    creator_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    creator = db.relationship('User', backref=db.backref('creator', lazy='dynamic'))
+    time = db.Column(db.DateTime)
+    created = db.Column(db.DateTime)
 
-    def __init__(self, description):
+    def __init__(self, location, description, creator, time):
+        self.location = location
         self.description = description
+        self.creator = creator
+        self.time = time
+        self.created = datetime.utcnow()
 
     def __repr__(self):
         return '<Event %r>' % self.description
+
+'''class EventMember(db.Model):
+    __tablename__ = 'eventmembers'
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user = db.relationship('User', backref=db.backref('users',lazy='dynamic'))
+    event_id = db.Column(db.Integer, db.ForeignKey('events.id'))
+    event = db.relationship('Event', backref=db.backref('events',lazy='dynamic'))
+
+    def __init__(self, user_id, event_id):
+        self.user_id = user_id
+        self.event_id = event_id
+
+    def __repr__(self):
+        return '<EventMember %r>' % self.userid, self.event_id
+        '''

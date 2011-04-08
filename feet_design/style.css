@@ -46,10 +46,34 @@ h2 {
     background:url('logo.png');
 }
 
+#loginid{
+	margin-top:5px;
+	margin-left:0px;
+	height:50px;
+	color:#fff;
+	font-size:11px;
+	font-weight:normal;
+	vertical-align:middle;
+}
+
+#loginid .h2{
+	font-size:14px;
+	font-weight:bold;
+	vertical-align:middle;
+}
+
+#loginid .loginidphoto{
+	height: 50px;
+	width: 50px;
+	vertical-align:middle;
+	alignment:left;
+	padding-right:5px;
+}
+
 
 .search {
 	position:relative; right:-130px;
-    margin-top:20px;
+    margin-top:30px;
 	-moz-border-radius: 8px;
 	border-radius: 8px;
     background: #f400a1;
@@ -266,25 +290,32 @@ h2 {
 
 .event {
     border-bottom: 1px solid #EEEEEE;
-    margin-top:5px;
+    margin-top:11px;
+	padding-bottom:10px;
     height:56px;
 }
 
 .event img {
     padding: 3px 0 0 3px;
+	-moz-border-radius:3px;
+	border-radius:3px;
 }
 
 .event_text {
-	height:100%;
-	vertical-align:central;
-    font-size:16px;
+	vertical-align:middle;
+    font-size:11px;
     margin-left:60px;
     margin-top:-56px;
     width:400px;
+	vertical-align:text-top;
 }
 
 .event_text a {
     font-variant: small-caps;
+	text-decoration:none;
+	font-size:14px;
+	font-weight:bold;
+	vertical-align:text-top;
 }
 
 .event_time {

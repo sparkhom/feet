@@ -7,13 +7,11 @@
     <div id="left">
     </div>
     <div id="right">
-        {% for message in messages %}
-          <li>{{ message }}</li>
-        {% endfor %}
         <ul>
         {% for event in events %}
-        <li>{{ event.creator.first_name }} {{ event.creator.last_name }}<br>
-        {{ event.description }}</li>
+        <li>{{ event.creator.first_name }} {{ event.creator.last_name }} at {{ event.location}} ({{ event.start_time }})<br>
+        {{ event.description }}<br>
+        </li>
         {% endfor %}</ul>
     <form method="POST" action="{{ url_for('index') }}">
         {{ form.csrf }} {{ form.location }}

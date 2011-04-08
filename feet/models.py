@@ -14,6 +14,8 @@ class User(db.Model):
     username = db.Column(db.String(80), unique=True)
     password = db.Column(db.String(256))
     email = db.Column(db.String(256))
+    latitude = db.Column(db.Float())
+    longitude = db.Column(db.Float())
     location = db.Column(db.String(80))
     first_name = db.Column(db.String(80))
     last_name = db.Column(db.String(80))
@@ -24,10 +26,12 @@ class User(db.Model):
     events = db.relationship('Event', secondary=event_members, backref=db.backref('users', lazy='dynamic'), lazy='dynamic')
     created = db.Column(db.DateTime)
 
-    def __init__(self, username, password, email, location, first_name=None, last_name=None, phone=None, website=None, aim=None, gtalk=None):
+    def __init__(self, username, password, email, latitude, longitude, location, first_name=None, last_name=None, phone=None, website=None, aim=None, gtalk=None):
         self.username = username
         self.password = password
         self.email = email
+        self.latitude = latitude
+        self.longitude = longitude
         self.location = location
         self.first_name = first_name
         self.last_name = last_name
@@ -62,6 +66,8 @@ class Request(db.Model):
 class Event(db.Model):
     __tablename__ = 'events'
     id = db.Column(db.Integer, primary_key=True)
+    latitude = db.Column(db.Float())
+    longitude = db.Column(db.Float())
     location = db.Column(db.String(80))
     description = db.Column(db.String(160))
     creator_id = db.Column(db.Integer, db.ForeignKey('users.id'))
@@ -71,7 +77,9 @@ class Event(db.Model):
     expire_time = db.Column(db.DateTime)
     created = db.Column(db.DateTime)
 
-    def __init__(self, location, description, creator, start_time, end_time=None, expire_time=None):
+    def __init__(self, latitude, longitude, location, description, creator, start_time, end_time=None, expire_time=None):
+        self.latitude = latitude
+        self.longitude = longitude
         self.location = location
         self.description = description
         self.creator = creator

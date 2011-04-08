@@ -21,7 +21,7 @@ class User(db.Model):
     website = db.Column(db.String(80))
     aim = db.Column(db.String(80))
     gtalk = db.Column(db.String(80))
-    events = db.relationship('Event', secondary=event_members, backref=db.backref('users', lazy='dynamic'))
+    events = db.relationship('Event', secondary=event_members, backref=db.backref('users', lazy='dynamic'), lazy='dynamic')
     created = db.Column(db.DateTime)
 
     def __init__(self, username, password, email, location, first_name=None, last_name=None, phone=None, website=None, aim=None, gtalk=None):

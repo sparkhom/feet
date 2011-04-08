@@ -14,14 +14,14 @@
     });
   }
 $(document).ready(function() {
-	$('#register_submit').submit(function() {
+	$('#settings_submit').submit(function() {
 		$('#log').html('Submitting form...');
 		$('#log').css({'color':'black'});
 		$('#log').show();
 		codeAddress();
 		$.post(
-			'{{ url_for('register') }}',
-			$('#register_submit').serialize(),
+			'{{ url_for('settings') }}',
+			$('#settings_submit').serialize(),
 			function(data) {
 				$('#log').hide();
 				if (data.success) {
@@ -55,7 +55,7 @@ $(document).ready(function() {
           <li>{{ message }}</li>
         {% endfor %}
     {% endwith %}
-<form method="POST" id="register_submit" action="{{ url_for('register') }}">
+<form method="POST" id="settings_submit" action="{{ url_for('settings') }}">
     {{ form.csrf }}
     {{ form.username.label }} {{ form.username(size=20) }}<br>
     {{ form.password.label }} {{ form.password(size=20) }}<br>

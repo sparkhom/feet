@@ -1,14 +1,54 @@
 {% extends "layout.html" %}
+{% block head %}
+<script type="text/javascript">
+$(document).ready(function() {
+	$('#login_submit').submit(function() {
+		$('#log').html('Submitting form...');
+		$('#log').css({'color':'black'});
+		$('#log').show();
+		$.post(
+			'{{ url_for('login') }}',
+			$('#login_submit').serialize(),
+			function(data) {
+				$('#log').hide();
+				if (data.success) {
+					$('#log').css({'color':'#008000'});
+					$('#log').html('Successfully logged in.');
+					$('#log').slideDown('slow');
+					window.location = '{{ url_for('index') }}';
+				} else {
+					var err = 'Errors occurred:<br>';
+					err += data.error.join('<br>');
+					for (i in data.validation) {
+						err += i + ' ' + data.validation[i] + '<br>';
+					}	
+					$('#log').css({'color':'#800000'});
+					$('#log').html(err);
+					$('#log').slideDown('slow');
+				}
+			},
+			'json'
+		);
+		return false;
+	});
+});
+</script>
+{% endblock %}
 {% block body %}
+<div id="main">
+<div id="left">
     {% with messages = get_flashed_messages() %}
         {% for message in messages %}
           <li>{{ message }}</li>
         {% endfor %}
     {% endwith %}
-<form method="POST" action="{{ url_for('login') }}">
+<form method="POST" id="login_submit" action="{{ url_for('login') }}">
     {{ form.csrf }}
     {{ form.username.label }} {{ form.username(size=20) }}<br>
     {{ form.password.label }} {{ form.password(size=20) }}<br>
     {{ form.submit }}
 </form>
+<div id="log"></div>
+</div>
+</div>
 {% endblock %}

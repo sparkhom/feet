@@ -1,0 +1,30 @@
+{% block body %}
+<div id="dynamic">
+<b>{{ user.username }} ({{ user.first_name }} {{ user.last_name }})</b><br>
+Location: {{ user.location }}<br>
+{% if user.phone %}
+Phone: {{ user.phone }}<br>
+{% endif %}
+{% if user.website %}
+Website: {{user.website}}<br>
+{% endif %}
+{% if user.about_me %}
+About me: {{ user.about_me }}<br>
+{% endif %}
+<br><br>
+List of events attended by this user:<br>
+{% for event in user_events %}
+<div class="event">
+{{ event.location }} ({{ event.start_time }})<br>
+<b>{{ event.description }}</b><br>
+</div>
+{% endfor %}
+List of events created by this user:<br>
+{% for event in user_made %}
+<div class="event">
+{{ event.location }} ({{ event.start_time }})<br>
+<b>{{ event.description }}</b><br>
+</div>
+</div>
+{% endfor %}
+{% endblock %}

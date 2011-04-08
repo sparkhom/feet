@@ -23,10 +23,11 @@ class User(db.Model):
     website = db.Column(db.String(80))
     aim = db.Column(db.String(80))
     gtalk = db.Column(db.String(80))
+    about_me = db.Column(db.String(1024))
     events = db.relationship('Event', secondary=event_members, backref=db.backref('users', lazy='dynamic'), lazy='dynamic')
     created = db.Column(db.DateTime)
 
-    def __init__(self, username, password, email, latitude, longitude, location, first_name=None, last_name=None, phone=None, website=None, aim=None, gtalk=None):
+    def __init__(self, username, password, email, location, latitude=None, longitude=None, first_name=None, last_name=None, phone=None, website=None, aim=None, gtalk=None, about_me=None):
         self.username = username
         self.password = password
         self.email = email
@@ -39,6 +40,7 @@ class User(db.Model):
         self.website = website
         self.aim = aim
         self.gtalk = gtalk
+	self.about_me = about_me
         self.created = datetime.utcnow()
 
     def __repr__(self):
@@ -71,7 +73,7 @@ class Event(db.Model):
     location = db.Column(db.String(80))
     description = db.Column(db.String(160))
     creator_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    creator = db.relationship('User', backref=db.backref('creator', lazy='dynamic'))
+    creator = db.relationship('User', backref=db.backref('made', lazy='dynamic'))
     start_time = db.Column(db.DateTime)
     end_time = db.Column(db.DateTime)
     expire_time = db.Column(db.DateTime)

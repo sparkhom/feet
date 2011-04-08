@@ -1,1 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>feet.  |  hanging out locally.</title>
+        <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.3.0/build/cssreset/reset-min.css">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('index') }}static/css/style.css">
+        <link rel="icon" href="favicon.ico" type="image/x-icon">
+<script src="http://code.google.com/apis/gears/gears_init.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="{{ url_for('index') }}static/js/jquery-1.5.2.js"></script>
+<script type="text/javascript" src="{{ url_for('index') }}static/js/geo.js"></script>
+{% block head %}{% endblock %}
+</head>
+    <body>
+        <div id="wrap">
+            <div id="header">
+                <div id="navbar">
+                    <ul>
+                        <li><a href="{{ url_for('index') }}" id="current_nav">Main</a></li>
+			{% if not current_user %}
+                        <li><a href="{{ url_for('login') }}">Login</a></li>
+                        <li><a href="{{ url_for('register') }}">Register</a></li>
+			{% else %}
+                        <li><a href="{{ url_for('settings') }}">Settings</a></li>
+                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+			{% endif %}
+                        <li><a href="#">Notifications</a></li>
+                    </ul>
+                    <form class="search">
+                                                <input type="text" onblur="if (this.value == '') {this.value = 'Search...';}" onfocus="if (this.value == 'Search...') {this.value = '';}" value="Search..." class="field">
+                                                <input type="button" value="Search" class="go">
+                                        </form>
+                </div>
+                    
+                <div id="logo"></div>
+	</div>
+                    
 {% block body %}{% endblock %}
+<div id="footer">
+                &copy; 2011 feet.
+            </div>
+            </div>
+</body>
+</html>

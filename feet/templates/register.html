@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+    {% endwith %}
+<form method="POST" action="{{ url_for('register') }}">
+    {{ form.csrf }}
+    {{ form.username.label }} {{ form.username(size=20) }}<br>
+    {{ form.password.label }} {{ form.password(size=20) }}<br>
+    {{ form.email.label }} {{ form.email(size=20) }}<br>
+    {{ form.latitude }}
+    {{ form.longitude }}
+    {{ form.location }}
+    {{ form.first_name.label }} {{ form.first_name(size=20) }}<br>
+    {{ form.last_name.label }} {{ form.last_name(size=20) }}<br>
+    {{ form.phone.label }} {{ form.phone(size=20) }}<br>
+    {{ form.website.label }} {{ form.website(size=20) }}<br>
+    {{ form.aim.label }} {{ form.aim(size=20) }}<br>
+    {{ form.gtalk.label }} {{ form.gtalk(size=20) }}<br>
+    {{ form.submit }}
+</form>
+{% endblock %}

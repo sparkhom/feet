@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block body %}
+    {% with messages = get_flashed_messages() %}
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+    {% endwith %}
+<form method="POST" action="{{ url_for('login') }}">
+    {{ form.csrf }}
+    {{ form.username.label }} {{ form.username(size=20) }}<br>
+    {{ form.password.label }} {{ form.password(size=20) }}<br>
+    <input type="submit" value="Login">
+</form>
+{% endblock %}

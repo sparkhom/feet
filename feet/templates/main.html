@@ -15,5 +15,12 @@
         <li>{{ event.creator.first_name }} {{ event.creator.last_name }}<br>
         {{ event.description }}</li>
         {% endfor %}</ul>
+    <form method="POST" action="{{ url_for('index') }}">
+        {{ form.csrf }} {{ form.location }}
+        {{ form.description.label }} {{ form.description }}<br>
+        {{ form.start_time.label }} {{ form.start_time }}<br>
+        {{ form.end_time.label }} {{ form.end_time }}<br>
+        {{ form.expire_time.label }} {{ form.expire_time }}<br>
+        {{ form.submit }}
     </div>
 </div>

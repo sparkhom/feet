@@ -66,14 +66,18 @@ class Event(db.Model):
     description = db.Column(db.String(160))
     creator_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     creator = db.relationship('User', backref=db.backref('creator', lazy='dynamic'))
-    time = db.Column(db.DateTime)
+    start_time = db.Column(db.DateTime)
+    end_time = db.Column(db.DateTime)
+    expire_time = db.Column(db.DateTime)
     created = db.Column(db.DateTime)
 
-    def __init__(self, location, description, creator, time):
+    def __init__(self, location, description, creator, start_time, end_time=None, expire_time=None):
         self.location = location
         self.description = description
         self.creator = creator
-        self.time = time
+        self.start_time = start_time
+        self.end_time = end_time
+        self.expire_time = expire_time
         self.created = datetime.utcnow()
 
     def __repr__(self):

@@ -1,9 +1,11 @@
 from __future__ import absolute_import
 from flask import Module, render_template, session, g, request, flash, redirect, url_for
 from feet.models import db, User, Event, Request
-from flaskext.wtf import Form, TextField, PasswordField, SubmitField, HiddenField, Required, Optional, Email, Length, URL, TextAreaField
+from flask.ext.wtf import Form
+from wtforms import TextField, PasswordField, SubmitField, HiddenField, TextAreaField
+from wtforms.validators import Required, Optional, Email, Length, URL
 from wtforms.ext.dateutil.fields import DateTimeField
-from flaskext.sqlalchemy import sqlalchemy
+from flask.ext.sqlalchemy import sqlalchemy
 from hashlib import sha1
 from json import dumps, loads
 
@@ -63,7 +65,7 @@ def settings():
             if form.password.data == '':
                 del form.password
             else:
-               form.password.data = sha1(form.password.data).hexdigest()
+               form.password.data = sha1(form.password.data.encode('utf-8')).hexdigest()
             form.populate_obj(g.user) 
             #if g.user.password != '':
             #    g.user.password = sha1(g.user.password).hexdigest()
@@ -94,7 +96,7 @@ def register():
             if User.query.filter_by(username=form.username.data).count() > 0:
                 error.append('There is already a user by that name.')
             else:
-                user = User(form.username.data, sha1(form.password.data).hexdigest(), form.email.data, form.location.data, form.latitude.data, form.longitude.data, form.first_name.data, form.last_name.data, form.phone.data, form.website.data, form.aim.data, form.gtalk.data, form.about_me.data)
+                user = User(form.username.data, sha1(form.password.data.encode('utf-8')).hexdigest(), form.email.data, form.location.data, form.latitude.data, form.longitude.data, form.first_name.data, form.last_name.data, form.phone.data, form.website.data, form.aim.data, form.gtalk.data, form.about_me.data)
                 try:
                     db.session.add(user)
                     db.session.commit()
@@ -152,7 +154,7 @@ def login():
     if form.is_submitted():
         if form.validate():
             user = User.query.filter_by(username=form.username.data).first()
-            if user is None or user.password != sha1(form.password.data).hexdigest():
+            if user is None or user.password != sha1(form.password.data.encode('utf-8')).hexdigest():
                 error.append('Username/password is incorrect.')
             else:
                 session['user_id'] = user.id

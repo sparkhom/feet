@@ -1,4 +1,4 @@
-from flaskext.sqlalchemy import SQLAlchemy
+from flask.ext.sqlalchemy import SQLAlchemy
 from datetime import datetime
 
 db = SQLAlchemy()
@@ -40,7 +40,7 @@ class User(db.Model):
         self.website = website
         self.aim = aim
         self.gtalk = gtalk
-	self.about_me = about_me
+        self.about_me = about_me
         self.created = datetime.utcnow()
 
     def __repr__(self):

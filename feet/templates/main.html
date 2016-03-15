@@ -163,7 +163,7 @@ $(document).ready(function() {
     <div id="right">
 	{% if current_user %}
     <form method="POST" id="event_submit" class="event_sub" action="{{ url_for('index') }}">
-        {{ form.csrf }} {{ form.latitude }} {{ form.longitude }}
+        {{ form.csrf_token }} {{ form.latitude }} {{ form.longitude }}
 	{{ form.location.label}} {{ form.location }} <input type="button" id="place" name="place" value="Place on map"><br>
 <div id="map">
 <div id="current">Initializing...</div>

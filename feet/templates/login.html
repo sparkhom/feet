@@ -43,7 +43,7 @@ $(document).ready(function() {
         {% endfor %}
     {% endwith %}
 <form method="POST" id="login_submit" action="{{ url_for('login') }}">
-    {{ form.csrf }}
+    {{ form.csrf_token }}
     {{ form.username.label }} {{ form.username(size=20) }}<br>
     {{ form.password.label }} {{ form.password(size=20) }}<br>
     {{ form.submit }}
